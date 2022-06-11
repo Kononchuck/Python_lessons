@@ -4,7 +4,7 @@ import json
 url = 'https://www.cbr-xml-daily.ru/daily_json.js'
 response = requests.get(url)
 data = json.loads(response.text)
-valute = response.json()['Valute']
+show_usd = response.json()['Valute']['USD']['Value']
 
-print(valute)
+print(show_usd)
 
