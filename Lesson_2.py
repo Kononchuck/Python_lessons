@@ -6,9 +6,17 @@ for i in range (5):
 
 #Пользователь в цикле вводит 10 цифр.Найти количество введенных пользователем цифр 5.
 
-numbers_1 = int(input("Введите число: "))
-while numbers_1 < 11:
-    print('yes')
+zero = []
+five = 0
+while True:
+    numbers_1 = int(input('Введите число: '))
+    if len(zero) < 9:
+        zero.append(numbers_1)
+        if numbers_1 == 5:
+            five += 1
+    else:
+        print('Вы ввели цифру 5: ', five, 'раз')
+        break
 
 
 #Найти сумму ряда чисел от 1 от 100. Полученный результат вывести на экран.
