@@ -31,7 +31,6 @@ for i in text:
 print(sorted(counts.items(), reverse=True, key=lambda x: x[1])[0:5])
 
 
-
 #вывести количество разных слов в тексте(set)
 differ_words = len(set(counts))
 print(differ_words)
