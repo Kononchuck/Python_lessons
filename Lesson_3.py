@@ -1,5 +1,7 @@
 import re
 import pymorphy2
+
+
 #методами строк очистить текст от знаков препинания;
 
 text = open('text.txt', 'r')
