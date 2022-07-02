@@ -41,7 +41,7 @@ def sorted_counts_names(a):
             counts[i] = 1
     return (sorted(counts.items(), reverse = True, key = lambda x: x[1])[0:1])[0]
 
-print(sorted_counts_names(list_names))
+print('Наиболее часто встречающееся имя в списке:',sorted_counts_names(list_names)[0])
 
 
 
@@ -57,7 +57,11 @@ def find_rare_upper_case(a):
             counts[i] = 1
     return (((sorted(counts.items(), reverse = False, key = lambda x: x[1])[0:1][0])[0])[0])
 
-print(find_rare_upper_case(list_names))
+print('Редкая буква из списка:', find_rare_upper_case(list_names))
 
 
 '''В файле с логами  найти дату самого позднего лога (по метке времени) '''
+
+text = open('log.txt', 'r')
+text = text.read()
+print(text)
