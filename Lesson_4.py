@@ -1,7 +1,7 @@
 import random
-from functools import reduce
 import names
-import re
+import datefinder
+
 
 '''Напишите функцию (F): на вход список имен и целое число N; 
 на выходе список длины N случайных имен из первого списка 
@@ -62,6 +62,18 @@ print('Редкая буква из списка:', find_rare_upper_case(list_na
 
 '''В файле с логами  найти дату самого позднего лога (по метке времени) '''
 
-text = open('log.txt', 'r')
-text = text.read()
-print(text)
+file = open("log.txt",'r')
+content = file.read()
+matches = list(datefinder.find_dates(content))
+
+def last_log_list(a):
+    list_of_dates = []
+    for i in a:
+        if len(a) > 0:
+            for date in a:
+                list_of_dates.append(date)
+        else:
+            print("Found no dates.")
+    return sorted(list_of_dates, reverse = True)[0]
+
+print('Дата самого позднего лога:', last_log_list(matches))
