@@ -39,7 +39,7 @@ divisor_master()
 
 '''функция выводит каноническое разложение числа на простые множители'''
 
-def diveser(n):
+def divisor(n):
     list = []
     for i in del_list_simple:
         while i <= n:
@@ -50,7 +50,7 @@ def diveser(n):
                 i += 1
         return list
 
-print('Каноническое разложение числа на простые множители: ', diveser(n))
+print('Каноническое разложение числа на простые множители: ', divisor(n))
 
 
 
