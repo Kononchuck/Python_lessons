@@ -1,3 +1,12 @@
+"""1. Выберете дз, к функциям которого будете писать тесты;"""
+
+# домашние задания 4 и 5
+
+"""2. Создайте дополнительную ветку в репозитории GitHub с тестами;"""
+
+# https://github.com/Kononchuck/Python_lessons/branches
+
+"""3. Напишите не менее 5-ти тестов к функциям выбранного урока;"""
 
 n = 777
 del_list_all = []
@@ -43,3 +52,14 @@ def divisor(n):
 
 def test_2_fib_num():
     assert fib_num(6)==8
+
+
+
+
+"""4. В качестве ответа на дз пришлите ссылку на ветку с тестами или ссылку на
+
+PullRequest ветки с тестами с веткой master.
+"""
+#https://github.com/Kononchuck/Python_lessons/branches
+
+
