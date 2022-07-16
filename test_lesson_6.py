@@ -1,3 +1,5 @@
+#new file for pullrequest
+
 import random
 
 """1. Выберете дз, к функциям которого будете писать тесты;"""
