@@ -5,7 +5,8 @@ import csv
 #df = pd.read_csv('Auto.csv')
 with open ('Auto.csv', 'r') as f:
     reader = csv.reader(f, delimiter = '&')
-    print(random.choice(list(reader)))
+    next(reader) #пропускаем заголовок
+    df_auto = random.choice(list(reader))
 
 
 
@@ -43,5 +44,7 @@ def get_context(mpg, cylinders, displacement, horsepower, weight, acceleration, 
         'name': name,
 
     }
-print(get_context(18,8,307,130,3504,12,70,1,"chevrolet chevelle malibu"))
+
+print(df_auto)
+print(get_context(df_auto))
 
