@@ -6,6 +6,7 @@ from docxtpl import DocxTemplate
 
 #начинаем замерять время на выполнение задач
 start = time.process_time()
+
 #Создайте csv-файл с данными о машине.
 def get_context():
     dict_new = []
