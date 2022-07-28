@@ -2,15 +2,6 @@ import names
 import time
 
 #1. Написать свой генератор последовательностей, свой тернарный оператор
-# def gen_names (a):
-#     list_gen = []
-#     while a > 0:
-#         list_gen.append(names.get_first_name())
-#         a -= 1
-#     return list_gen
-#
-# list_names = gen_names(200)
-# #print(list_names)
 
 N = 100
 gen_simple = [i**2 for i in range (N+2)]
