@@ -53,11 +53,14 @@ print(simple_func)
 @check_memory
 def simple_func():
     n = []
-    for i in range(10000000):
+    for i in range(1000000):
         n.append(i)
     return n
 print(simple_func)
 
 
-simple_func_gen = (i for i in range(10000000))
-print(simple_func_gen)
+simple_func_gen = (i for i in range(1000000))
+
+
+
+
