@@ -1,7 +1,5 @@
 import random
 
-
-
 class Durak:
     def __init__(self, N):
         self.random = random.Random()
@@ -27,9 +25,6 @@ class Durak:
             num+=1
             print('Раздача карт игроку', num, ':', i)
         print('Козырная карта:', kozyr)
-
-#    def attacks(self):
-
 
 
 if __name__ == '__main__':
