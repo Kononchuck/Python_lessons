@@ -1,4 +1,5 @@
 import random
+import pytest
 
 class Durak:
     def __init__(self, N):
@@ -18,6 +19,7 @@ class Durak:
             coloda = [x for x in coloda if x not in mix]
             kozyr = random.sample(coloda, 1)
         return cards_list
+
 
     def players(self):
         num = int()
