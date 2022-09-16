@@ -13,7 +13,7 @@ from telebot import types
 
 
 
-bot = telebot.TeleBot('5716230886:AAHaofAizle1XCPd_30envWpVqhpI6P36jA')
+bot = telebot.TeleBot(________)
 
 
 @bot.message_handler(commands = ['start'])
