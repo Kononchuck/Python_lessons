@@ -65,10 +65,6 @@ def get_text(message):
         ans_1 = sorted(counts.items(), reverse=True, key=lambda x: x[1])[0:10]
         mess = f"Выводим ТОП-10 навыков и процент их встречаемости: {ans_1}"
         bot.send_message(message.chat.id, mess)
-    elif message.text == 'кнопка':
-        markup = types.InlineKeyboardMarkup()
-        markup.add(types.InlineKeyboardMarkup('Топ навыков специалистов по ИИ.'))
-        bot.send_message(message.chat.id, 'думаю вам буде интересно', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'я не понял', parse_mode='html')
 
