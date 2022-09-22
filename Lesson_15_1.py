@@ -8,19 +8,21 @@
 """
 
 import json
+import time
+import requests
 import telebot
-from telebot import *
+from telebot import types
+
+def print_me():
+    print('hi den')
 
 
-
-bot = telebot.TeleBot(________)
+bot = telebot.TeleBot('5716230886:AAHaofAizle1XCPd_30envWpVqhpI6P36jA')
 
 
 @bot.message_handler(commands = ['start'])
 def start(message):
-    mess = f"Привет, <b>{message.from_user.first_name} {message.from_user.last_name}" \
-           f" напиши - зарплата или - навыки, и получишь информацию о средней з\п специалиста по качеству и топ " \
-           f"навыков требуемых для специальности.</b>"
+    mess = f"Привет, <b>{message.from_user.first_name} {message.from_user.last_name}</b>"
     bot.send_message(message.chat.id, mess,  parse_mode='html')
 
 
@@ -65,9 +67,35 @@ def get_text(message):
         ans_1 = sorted(counts.items(), reverse=True, key=lambda x: x[1])[0:10]
         mess = f"Выводим ТОП-10 навыков и процент их встречаемости: {ans_1}"
         bot.send_message(message.chat.id, mess)
+    elif message.text == 'как':
+        ans_1 = print_me()
+        mess = f"Выводим ТОП-10 навыков и процент их встречаемости: {ans_1}"
+        bot.send_message(message.chat.id, mess)
+    elif message.text == 'кнопка':
+        markup = types.InlineKeyboardMarkup()
+        markup.add(types.InlineKeyboardMarkup('Топ навыков специалистов по ИИ.'))
+        bot.send_message(message.chat.id, 'думаю вам буде интересно', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, 'я не понял', parse_mode='html')
 
+@bot.message_handler(content_types=['photo'])
+def get_photo(message):
+    bot.send_message(message.chat.id, 'интересно', parse_mode='html')
+
+
+# @bot.message_handler(commands=['hi'])
+# def hh(message):
+#     markup = types.InlineKeyboardMarkup()
+#     markup.add(types.InlineKeyboardButton("my button", url="https://rbc.ru"))
+#     bot.send_message(message.chat.id, 'думаю вам будет интересно', reply_markup=markup)
+
+# @bot.message_handler(commands=['help'])
+# def hh(message):
+#     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+#     opr = types.KeyboardButton("Старт")
+#     photo = types.KeyboardButton("Фото")
+#     markup.add(opr, photo)
+#     bot.send_message(message.chat.id, 'думаю вам будет интересно', reply_markup=markup)
 
 bot.polling(none_stop=True)
 
