@@ -27,12 +27,9 @@ def hello_world():
      return render_template('main.html')
 
 
-@app.route('/moto')
+@app.route('/contacts')
 def motos():
-     data = {
-             'model': 'BMW',
-             'price': 0.8}
-     return render_template('moto.html', **data)
+     return render_template('contacts.html')
 
 
 @app.route('/cars')

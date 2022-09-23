@@ -7,3 +7,12 @@
     color: black;
     background-color: wheat;
     }
+    .center{
+    position:absolute;
+    width:780px;
+    height:650px;
+    left:50%;
+    top:50%;
+    margin-left:-390px;
+    margin-top:-325px;
+    }
