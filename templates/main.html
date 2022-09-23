@@ -2,31 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>Сервис рассчета оплаты труда</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
+<!--    <a href = 'search_13.html'> Сервис поиска вакансий </a>-->
+<!--    <br>-->
+    <a href = '/contacts'> Контактная информация </a>
 
-<h1> Главная страница!</h1>
-<ul>
-    <li>
-        <a href = '/' class = class1>Главная страница</a>
-    </li>
-    <li>
-        <a href = '/cars' class = class2>Авто</a>
-    </li>
-    <li>
-        <a href = '/moto' class = class1>Мото</a>
-    </li>
-<!--     <li>-->
-<!--        <a href = '/form' class = class1>Авто с формой</a>-->
-<!--     </li>-->
-</ul>
+    <h2 class = 'center'> Сервис по поиску средней заработной платы и требуемых навыков </h2>
+    <h3 class = 'center'> «А достаточно ли я получаю?» — такой вопрос рано или поздно задает себе любой профессионал. Нередко в компаниях сотрудники на одинаковых позициях получают разную зарплату, а переход в другую отрасль может увеличить доход на 20−50%. Есть несколько способов понять, сколько за похожую работу предлагает рынок.</h3>
 
-<form action = '/form' method = 'post'>
-    <input type = 'text' name = 'request_HH'/>
+
+<p>
+
+<form class = 'center' action = '/form' method = 'post'>
+<!--    <input type = 'text' name = 'request_HH'/>-->
 <!--    <input type = 'text' name = 'price'/>-->
-    <button type = 'submit'>Отправить</button>
+    <input class="form-control" type="text" placeholder="Введите искомую специальность, например 'менеджер по качеству'." name = 'request_HH'/>
+    <input type="submit" class = 'btn btn-info' value="Отправить">
+<!--    <button type = 'submit'>Отправить</button>-->
 </form>
 
 

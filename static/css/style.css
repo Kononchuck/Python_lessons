@@ -1,0 +1,25 @@
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
+
+  .class-h1 {
+    color: black;
+    background-color: cornflowerblue;
+    }
+
+    .class-h2 {
+    color: black;
+    background-color: wheat;
+    }
+    /*.center{*/
+    /*position:absolute;*/
+    /*width:780px;*/
+    /*height:650px;*/
+    /*left:50%;*/
+    /*top:50%;*/
+    /*margin-left:-390px;*/
+    /*margin-top:-325px;*/
+    /*}*/

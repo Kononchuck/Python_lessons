@@ -27,12 +27,9 @@ def hello_world():
      return render_template('main.html')
 
 
-@app.route('/moto')
+@app.route('/contacts')
 def motos():
-     data = {
-             'model': 'BMW',
-             'price': 0.8}
-     return render_template('moto.html', **data)
+     return render_template('contacts.html')
 
 
 @app.route('/cars')
@@ -42,16 +39,6 @@ def cars():
              'price': 1.5}
      return render_template('cars.html', data=data)
 
-
-# @app.route('/form', methods = ['POST'])
-# def form():
-#      brand = request.form['brand']
-#      price = request.form['price']
-#      #print(brand, price)
-#      data = {
-#              'model': brand,
-#              'price': price}
-#      return render_template('form.html', data=data)
 
 @app.route('/form', methods = ['POST'])
 def form():
@@ -79,7 +66,7 @@ def form():
                     sum_salaries += salary['from']
         all_salaries += sum_salaries
         all_num += num
-    average_salary = all_salaries / all_num
+    average_salary = all_salaries/all_num
     average_salary = float('{:.2f}'.format(average_salary))
     tags_list_vac = []
     for i in list_of_vacancies:
@@ -105,5 +92,5 @@ def form():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = False)
 
