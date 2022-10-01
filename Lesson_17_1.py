@@ -21,19 +21,19 @@ from sqlite3 import Error
 
 
 
-# # Подключаемся к базе (создаем базу)
-# connect = None
-#
-# try:
-#     connect = sqlite3.connect('test_staff.db')
-#     cur = connect.cursor()
-# except sqlite3.Error as e:
-#     print(f"Error {e.args[0]}:")
-#
-#
-# # создадим таблицу с уникальным столбцом
-# cur.execute("CREATE TABLE staff(id INTEGER UNIQUE, name TEXT, area TEXT, created_at TEXT,"
-#             " published_at TEXT, employer TEXT,salary TEXT, schedule TEXT, snippet TEXT, url TEXT)")
+# Подключаемся к базе (создаем базу)
+connect = None
+
+try:
+    connect = sqlite3.connect('test_staff.db')
+    cur = connect.cursor()
+except sqlite3.Error as e:
+    print(f"Error {e.args[0]}:")
+
+
+# создадим таблицу с уникальным столбцом
+cur.execute("CREATE TABLE staff(id INTEGER UNIQUE, name TEXT, area TEXT, created_at TEXT,"
+            " published_at TEXT, employer TEXT,salary TEXT, schedule TEXT, snippet TEXT, url TEXT)")
 
 
 

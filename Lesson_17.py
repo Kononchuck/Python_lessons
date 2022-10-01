@@ -11,6 +11,26 @@
 import pprint
 import requests
 from flask import Flask, render_template, request
+import json
+import sqlite3
+from sqlite3 import Error
+'''
+# Подключаемся к базе (создаем базу)
+connect = None
+
+try:
+    connect = sqlite3.connect('test_staff.db')
+    cur = connect.cursor()
+except sqlite3.Error as e:
+    print(f"Error {e.args[0]}:")
+
+
+# создадим таблицу с уникальным столбцом
+cur.execute("CREATE TABLE staff(id INTEGER UNIQUE, name TEXT, area TEXT, created_at TEXT,"
+            " published_at TEXT, employer TEXT,salary TEXT, schedule TEXT, snippet TEXT, url TEXT)")
+'''
+
+
 
 
 app = Flask(__name__)
@@ -42,7 +62,30 @@ def form():
         url = 'https://api.hh.ru/vacancies'
         result = requests.get(url, params={'text': request_hh, 'area': '1', 'per_page': 1, 'page' : i})
         list_of_vacancies.append(result.json())
-
+    # добавляем данные в базу
+    for i in list_of_vacancies:
+        for i in i['items']:
+            id = i['id']
+            name = str(i['name'])
+            area = str(i['area'])
+            created_at = str(i['created_at'])
+            published_at = str(i['published_at'])
+            employer = str(i['employer'])
+            salary = str(i['salary'])
+            schedule = str(i['schedule'])
+            snippet = str(i['snippet'])
+            url = str(i['url'])
+            # print(id, name, area, created_at, published_at, employer, salary, schedule, snippet, url)
+            # Opens a file called
+            connect = sqlite3.connect('test_staff.db')
+            cursor = connect.cursor()
+            # Insert the values into the table
+            cursor.execute(
+                '''INSERT OR IGNORE INTO staff(id, name, area, created_at, published_at, employer, salary, schedule, snippet, url ) VALUES(?,?,?,?,?,?,?,?,?,?)''',
+                (id, name, area, created_at, published_at, employer, salary, schedule, snippet, url))
+            # Commit the change
+            connect.commit()
+            connect.close()
     for i in list_of_vacancies:
         y = i['items']
         num = 0
