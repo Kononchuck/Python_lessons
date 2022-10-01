@@ -12,7 +12,7 @@
 средняя ЗП по данной вакансии в этом городе и список релевантных навыков
 (бекэнд взять из 12-го вебинара).
 """
-
+import pprint
 import requests
 from flask import Flask, render_template, request
 
@@ -32,13 +32,6 @@ def motos():
      return render_template('contacts.html')
 
 
-@app.route('/cars')
-def cars():
-     data = {
-             'model': 'Volvo',
-             'price': 1.5}
-     return render_template('cars.html', data=data)
-
 
 @app.route('/form', methods = ['POST'])
 def form():
@@ -53,6 +46,7 @@ def form():
         url = 'https://api.hh.ru/vacancies'
         result = requests.get(url, params={'text': request_hh, 'area': '1', 'per_page': 1, 'page' : i})
         list_of_vacancies.append(result.json())
+
     for i in list_of_vacancies:
         y = i['items']
         num = 0
