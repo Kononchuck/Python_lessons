@@ -58,10 +58,13 @@ def form():
     all_words = 0
     request_hh = request.form['request_HH']
     list_of_vacancies = []
-    for i in range(100):
+    for i in range(500):
         url = 'https://api.hh.ru/vacancies'
         result = requests.get(url, params={'text': request_hh, 'area': '1', 'per_page': 1, 'page' : i})
-        list_of_vacancies.append(result.json())
+        if i == result:
+            list_of_vacancies.append(result.json())
+        else:
+            pass
     # добавляем данные в базу
     for i in list_of_vacancies:
         for i in i['items']:
