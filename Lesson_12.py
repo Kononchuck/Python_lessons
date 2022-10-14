@@ -12,17 +12,17 @@ all_num = 0
 all_words = 0
 
 """Закомментированный код используется один раз для получения информации с HH"""
-# list_of_vacancies = []
-# for i in range(100):
-#     url = 'https://api.hh.ru/vacancies'
-#     result = requests.get(url, params={'text': 'Python', 'area': '1', 'per_page': 1, 'page' : i})
-#     list_of_vacancies.append(result.json())
-# print(type(list_of_vacancies))
-#
-#
-# """Сохраняем данные для локальной работы"""
-# with open('vacancies.txt', 'w') as outfile:
-#     json.dump(list_of_vacancies, outfile)
+list_of_vacancies = []
+for i in range(100):
+    url = 'https://api.hh.ru/vacancies'
+    result = requests.get(url, params={'text': 'Специалист в области качества', 'area': '1', 'per_page': 1, 'page' : i})
+    list_of_vacancies.append(result.json())
+print(type(list_of_vacancies))
+
+
+"""Сохраняем данные для локальной работы"""
+with open('vacancies.txt', 'w') as outfile:
+    json.dump(list_of_vacancies, outfile)
 
 
 """Открываем с локального ресурса"""
@@ -56,27 +56,27 @@ for i in list_of_vacancies:
     all_num += num
 average_salary = all_salaries/all_num
 average_salary = float('{:.2f}'.format(average_salary))
-print("Средняя заработная плата разработчиков Python по Москве (рубли): ", average_salary)
+print("Средняя заработная плата по Москве (рубли): ", average_salary)
 
 
-# tags_list_vac = []
-# for i in list_of_vacancies:
-#     for i in i['items']:
-#         vac_id = i['id']
-#         vac_res = ses.get(f'https://api.hh.ru/vacancies/{vac_id}')
-#         if len(vac_res.json()["key_skills"]) > 0:  # at least one skill present
-#             print(vac_id)
-#             tags = [v for v_dict in vac_res.json()["key_skills"] for _, v in v_dict.items()]
-#             print(' '.join(tags))
-#             tags_list_vac.append(tags)
-#             print()
-#             """Сохраняем данные для локальной работы"""
-#             with open('tags_list_vac.txt', 'w') as outfile:
-#                 json.dump(tags_list_vac, outfile)
-#         time.sleep(0.1)
+tags_list_vac = []
+for i in list_of_vacancies:
+    for i in i['items']:
+        vac_id = i['id']
+        vac_res = ses.get(f'https://api.hh.ru/vacancies/{vac_id}')
+        if len(vac_res.json()["key_skills"]) > 0:  # at least one skill present
+            # print(vac_id)
+            tags = [v for v_dict in vac_res.json()["key_skills"] for _, v in v_dict.items()]
+            # print(' '.join(tags))
+            tags_list_vac.append(tags)
+            # print()
+            """Сохраняем данные для локальной работы"""
+            with open('tags_list_vac.txt', 'w') as outfile:
+                json.dump(tags_list_vac, outfile)
+        time.sleep(0.1)
 
-with open('tags_list_vac.txt') as json_file:
-    tags_list_vac = json.load(json_file)
+# with open('tags_list_vac.txt') as json_file:
+#     tags_list_vac = json.load(json_file)
 
 
 counts = dict()
@@ -87,4 +87,4 @@ for sublist in tags_list_vac:
         else:
             counts[x] = 1
 
-print("Выводим ТОП-10 навыков и процент их встречаемости: ", sorted(counts.items(), reverse=True, key=lambda x: x[1])[0:10])
+print("Выводим ТОП-10 навыков и процент их встречаемости: ", sorted(counts.items(), reverse=True, key=lambda x: x[1])[0:20])

@@ -8,7 +8,6 @@ from sqlalchemy import Column, Integer, String, Float, create_engine, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import pprint
-import requests
 from flask import Flask, render_template, request
 import json
 import sqlite3
@@ -37,7 +36,11 @@ cur.execute("CREATE TABLE staff(id INTEGER UNIQUE, name TEXT, area TEXT, created
 from sqlalchemy import Column, Integer, String, Float, create_engine, ForeignKey, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import logging
 
+def logged(cls):
+    cls.log = logging.getLogger(cls.__name__)
+    return cls
 
 ses = requests.Session()
 ses.headers = {'HH-User-Agent': "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0"}
@@ -58,6 +61,7 @@ print(type(list_of_vacancies))
 engine = create_engine('sqlite:///staff.db', echo=False)
 Base = declarative_base()
 
+@logged
 class Staff(Base):
     __tablename__ = 'staff'
     id = Column(Integer, primary_key=True)
